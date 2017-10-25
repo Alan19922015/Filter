@@ -1,0 +1,77 @@
+#!/bin/bash
+##
+## Time-stamp: <2016-10-31 08:31:37 (cluettig)>
+##
+
+#set -x
+
+###  usage: ./richtungsfilter.gmt $1 $2 $3 $4
+###  $1: all or roi
+###  $2:directory of vx and vy (nc-files)
+###  $3:use filtered or unfiltered data
+###  $4:if you want to use filtered data:prefix of the input
+
+
+###########   FILES   #################################################################################################
+
+if [ $3 == 'u' ]; then
+    vx=$2/vx.nc      ###  input vx
+    vy=$2/vy.nc      ###  input vy
+    f_mask=$2/rf_mask.nc
+    f_vx=$2/rf_vx.nc ###  output vx
+    f_vy=$2/rf_vy.nc ###  output vy
+elif [ $3 == 'f' ]; then 
+    vx=$2/$4_vx.nc      ###  input vx
+    vy=$2/$4_vy.nc      ###  input vy
+    f_mask=$2/rf_$4_mask.nc
+    f_vx=$2/rf_$4_vx.nc ###  output vx
+    f_vy=$2/rf_$4_vy.nc ###  output vy
+else
+    echo "third argument has to be u(nfiltered) or f(iltered)"
+    exit
+fi
+
+gdalinfo $vx >> tmp.txt
+grep "\<NC_GLOBAL#f" tmp.txt | cut -d= -f2 >>op.txt
+
+if [ $1 == "all" ]; then
+    roi_vx=$vx
+    roi_vy=$vy
+elif [ $1 == "roi" ]; then
+    roi=-R-513294/-480556/789935/822030
+    roi_vx=$2/roi_vx.nc
+    roi_vy=$2/roi_vy.nc
+    echo "cutting region of interest:"
+    echo $roi
+    echo $roi_vx
+    gmt grdcut $vx -G$roi_vx  $roi
+    echo $roi_vy
+    gmt grdcut $vy -G$roi_vy  $roi
+elif [ "$1" == '' ]; then
+    echo "parameter all or roi forgotten"
+    exit 1
+fi
+
+cp $roi_vx $f_vx
+cp $roi_vy $f_vy
+cp $roi_vx $f_mask
+
+###########   PARAMETER   ################################################################
+
+angle=$(grep "^angle" $2/parameter.txt | awk -F : '{print $2}')
+cs=$(grep "^chipsize direction" ../parameter.txt | awk -F : '{print $2}')
+e=$(grep "^e std" $2/parameter.txt | awk -F : '{print $2}')
+
+
+###########   FILTER   ###################################################################
+echo  $roi_vx $roi_vy $f_mask $angle $cs $e
+python filter.py $roi_vx $roi_vy $f_mask $angle $cs $e
+echo $f_mask
+gmt grdmath $f_vx $f_mask OR = $f_vx
+gmt grdmath $f_vy $f_mask OR = $f_vy
+
+
+###########   OLD FILES   ################################################################
+rm tmp.txt op.txt  $f_mask 
+
+

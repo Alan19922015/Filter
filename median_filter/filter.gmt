@@ -1,0 +1,61 @@
+#!/bin/bash
+##
+## Time-stamp: <2016-08-22 13:07:28 (cluettig)>
+##
+
+#set -x
+
+###  usage: ./medianfilter.gmt $1 $2 $3
+###  $1: all or roi
+###  $2: directory of vx and vy
+###  $3: use filtered or unfiltered data
+###  $4: if you want to use filtered data:prefix of the input
+
+###########   FILES   #################################################################################################
+if [ $3 == 'u' ]; then
+    f_vx=$2/mf_vx.nc ###  output vx
+    f_vy=$2/mf_vy.nc ###  output vy
+    vx=$2/vx.nc      ###  input vx
+    vy=$2/vy.nc      ###  input vy
+elif [ $3 == 'f' ]; then
+    vx=$2/$4_vx.nc      ###  input vx
+    vy=$2/$4_vy.nc      ###  input vy
+    f_vx=$2/mf_$4_vx.nc ###  output vx
+    f_vy=$2/mf_$4_vy.nc ###  output vy
+else
+    echo "third argument has to be u(nfiltered) or f(iltered)"
+    exit
+fi
+
+
+if [ $1 == "all" ]; then
+    roi_vx=$vx
+    roi_vy=$vy
+elif [ $1 == "roi" ]; then
+    roi=-R-513294/-480556/789935/822030
+    roi_vx=$2/mf_roi_vx.nc
+    roi_vy=$2/mf_roi_vy.nc
+    echo "cutting region of interest:"
+    echo $roi
+    echo $roi_vx
+    gmt grdcut $vx -G$roi_vx  $roi
+    echo $roi_vy
+    gmt grdcut $vy -G$roi_vy  $roi
+elif [ "$1" == '' ]; then
+    echo "parameter all or roi forgotten"
+    exit 1
+fi
+
+cp $roi_vx $f_vx
+cp $roi_vx $f_vy
+
+
+###########   PARAMETER   ##############################################################################################
+
+cs=$(grep "^chipsize median" $2/parameter.txt | awk -F : '{print $2}')
+eps=$(grep "^eps std" $2/parameter.txt | awk -F : '{print $2}')
+
+###########   FILTER   #################################################################################################
+python medianfilter.py $roi_vx $roi_vy $f_vx $f_vy $cs $eps
+
+
