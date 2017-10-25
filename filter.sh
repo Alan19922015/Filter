@@ -17,11 +17,11 @@ module load gdal
 
 fdir=$1
 echo $fdir
-cd Rosenaufilter
+cd segments_filter
 srun ./filter.gmt $fdir
-cd ../Medianfilter
+cd ../median_filter
 srun ./filter.gmt all $fdir f f1
-cd ../Richtungsfilter
+cd ../directional_filter
 srun ./filter.gmt all $fdir f mf_f1
 cd ..
 
