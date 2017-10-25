@@ -1,0 +1,88 @@
+#!/bin/bash
+##
+## Time-stamp: <2016-08-05 12:12:41 (cluettig)>
+##
+
+#set -x
+
+###  usage: ./filter.gmt $1
+###  $1:directory of vx and vy (nc-files)
+###  $2: N(orth) or S(outh)
+
+echo 'Start Rosenau filter'
+
+
+###  check if it's a Greenland or an Antarctica file:
+f=$1
+p=$f/parameter.txt
+NS=$(grep "^N(orth) or S(outh)" $p | awk -F : '{print $2}')    
+if [ $NS == 'N' ]; then
+    green=1   ###  Greenland
+    echo 'Region is a part of Greenland'
+elif [ $NS == 'S' ]; then
+    green=0   ###  Antarctica
+    echo 'Region is a part of Antarctica'
+else
+    echo 'Is it in N(orth) or S(outh)?'
+    exit
+fi
+
+
+###########   FILES   #################################################################################################
+f_vx=$1/f1_vx.nc
+f_vy=$1/f1_vy.nc
+vx=$1/vx.nc
+vy=$1/vy.nc
+
+
+if [ $green == 1 ]; then
+    r_vx=prior_vx.nc
+    r_vy=prior_vy.nc
+else
+    r_vx=rignot_vx.nc
+    r_vy=rignot_vy.nc
+fi
+
+roi_r_vx=$1/roi_r_vx.nc
+roi_r_vy=$1/roi_r_vy.nc
+
+##########   REGION   ################################################################################################
+echo 'cut region of interest of prior fields'
+
+inc=$(gmt grdinfo -I $vx)  
+roi=$(gmt grdinfo -I- $vx)
+
+echo 'compute' $roi_r_vx
+gmt grdsample $r_vx -G$roi_r_vx $roi $inc
+echo 'compute' $roi_r_vy
+gmt grdsample $r_vy -G$roi_r_vy $roi $inc
+
+##########   GET PARAMETER   ########################################################################################
+
+min_num=$(grep "^minimum number of elements in a segment" $p | awk -F : '{print $2}')
+if [ $(grep "^compute constant error" $p | awk -F : '{print $2}') == 'yes' ]; then
+    delta_t=$(grep "^image resolution" $p | awk -F : '{print $2}')
+    delta_x=$(grep "^time interval" $p | awk -F : '{print $2}')
+    e=$(./e_const.py $vx $vy $delta_t $delta_x $NS)
+else
+   e=$(grep "^constant error" $p | awk -F : '{print $2}')
+fi
+a=$(grep "^a" $p | awk -F : '{print $2}')
+
+w=$(grep "^difference to prior field factor" $p | awk -F : '{print $2}')
+
+##########   FILTER   ################################################################################################
+
+cp $vx $f_vx                ###  output file vx
+cp $vy $f_vy                ###  output file vy
+
+python filter.py $f_vx $f_vy $min_num $e $w $roi_r_vx $roi_r_vy $a
+
+########   OLD FILES   ##############################################################################################
+rm $roi_r_vx $roi_r_vy
+
+
+
+
+
+

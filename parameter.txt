@@ -1,0 +1,31 @@
+vx:/work/ollie/cluettig/filter_parameter/section/vx.tif
+vy:/work/ollie/cluettig/filter_parameter/section/vy.tif
+id :1347
+unit[m/a|m/d]:m/a
+
+Rosenau:
+N(orth) or S(outh):S
+minimum number of elements in a segment:8
+a:0.2
+difference to prior field factor:1.5
+compute constant error [yes/no]: no
+if yes:
+image resolution [m/p] delta_t:5
+TSX:2.5
+S1:5
+time interval between images [d]:12
+TSX:11
+S1:12
+if no:
+constant error:18.391128296
+19.2724517858 (Petermann TSX)
+18.391128296 (Recovery TSX)
+32.58099033 (NEGIS S1)
+
+Median:
+chipsize median:25
+eps std:3
+
+Direction:
+chipsize direction:25
+e std:3
