@@ -1,31 +1,32 @@
+# file names:
 vx:/work/ollie/cluettig/filter_parameter/section/vx.tif
 vy:/work/ollie/cluettig/filter_parameter/section/vy.tif
+# this is not important:
 id :1347
+
 unit[m/a|m/d]:m/a
 
-Rosenau:
+segments filter parameter:
+# Greenland or Antarctica, important for the projection of the data:
 N(orth) or S(outh):S
+
 minimum number of elements in a segment:8
 a:0.2
 difference to prior field factor:1.5
 compute constant error [yes/no]: no
 if yes:
 image resolution [m/p] delta_t:5
-TSX:2.5
-S1:5
+# image resolutions of TSX:2.5, S1:5
 time interval between images [d]:12
-TSX:11
-S1:12
+#TSX:11,S1:12
 if no:
 constant error:18.391128296
-19.2724517858 (Petermann TSX)
-18.391128296 (Recovery TSX)
-32.58099033 (NEGIS S1)
+# constant errors of tested regions: 19.2724517858 (Petermann TSX), 18.391128296 (Recovery TSX), 32.58099033 (NEGIS S1)
 
-Median:
+Median filter parameters:
 chipsize median:25
 eps std:3
 
-Direction:
+Directional filter parameters:
 chipsize direction:25
 e std:3

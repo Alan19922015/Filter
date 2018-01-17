@@ -39,4 +39,5 @@ if [ $unit == "m/d" ]; then
     gmt grdmath $vx 365.25 MUL = $vx
     gmt grdmath $vy 365.25 MUL = $vy
 fi
-sbatch filter.sh $fdir
+sbatch filter.sh $fdir # use this for slurm job at ollie
+# ./filter_without_ollie.sh     # use this on other platform
