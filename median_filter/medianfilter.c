@@ -757,9 +757,10 @@ static const char __pyx_k_numpy_ma[] = "numpy.ma";
 static const char __pyx_k_nanmedian[] = "nanmedian";
 static const char __pyx_k_median_std[] = "median_std";
 static const char __pyx_k_medianfilter[] = "medianfilter";
-static const char __pyx_k_work_ollie_cluettig_filter_fert[] = "/work/ollie/cluettig/filter_fertig/Medianfilter/medianfilter.pyx";
+static const char __pyx_k_Users_cluettig_Documents_Daten[] = "/Users/cluettig/Documents/Daten/github/Filter/median_filter/medianfilter.pyx";
 static PyObject *__pyx_n_s_;
 static PyObject *__pyx_n_s_Dataset;
+static PyObject *__pyx_kp_s_Users_cluettig_Documents_Daten;
 static PyObject *__pyx_n_s_array;
 static PyObject *__pyx_n_s_b1;
 static PyObject *__pyx_n_s_b2;
@@ -802,7 +803,6 @@ static PyObject *__pyx_n_s_std2;
 static PyObject *__pyx_n_s_sys;
 static PyObject *__pyx_n_s_test;
 static PyObject *__pyx_n_s_time;
-static PyObject *__pyx_kp_s_work_ollie_cluettig_filter_fert;
 static PyObject *__pyx_n_s_x;
 static PyObject *__pyx_n_s_xrange;
 static PyObject *__pyx_n_s_y;
@@ -2262,7 +2262,7 @@ static PyObject *__pyx_pf_12medianfilter_2median_std(CYTHON_UNUSED PyObject *__p
  *                 b3=j-c/2
  *                 b4=j+c/2             # <<<<<<<<<<<<<<
  * 
- * 
+ *         b1 = int(b1)
  */
     __pyx_t_4 = __Pyx_PyNumber_Divide(__pyx_v_c, __pyx_int_2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 52, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
@@ -2274,23 +2274,71 @@ static PyObject *__pyx_pf_12medianfilter_2median_std(CYTHON_UNUSED PyObject *__p
   }
   __pyx_L4:;
 
+  /* "medianfilter.pyx":54
+ *                 b4=j+c/2
+ * 
+ *         b1 = int(b1)             # <<<<<<<<<<<<<<
+ *         b2 = int(b2)
+ *         b3 = int(b3)
+ */
+  __pyx_t_2 = __Pyx_PyNumber_Int(__pyx_v_b1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 54, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __Pyx_DECREF_SET(__pyx_v_b1, __pyx_t_2);
+  __pyx_t_2 = 0;
+
   /* "medianfilter.pyx":55
  * 
- * 
+ *         b1 = int(b1)
+ *         b2 = int(b2)             # <<<<<<<<<<<<<<
+ *         b3 = int(b3)
+ *         b4 = int(b4)
+ */
+  __pyx_t_2 = __Pyx_PyNumber_Int(__pyx_v_b2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 55, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __Pyx_DECREF_SET(__pyx_v_b2, __pyx_t_2);
+  __pyx_t_2 = 0;
+
+  /* "medianfilter.pyx":56
+ *         b1 = int(b1)
+ *         b2 = int(b2)
+ *         b3 = int(b3)             # <<<<<<<<<<<<<<
+ *         b4 = int(b4)
+ *         med1=np.nanmedian(x[b1:b2,b3:b4])
+ */
+  __pyx_t_2 = __Pyx_PyNumber_Int(__pyx_v_b3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 56, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __Pyx_DECREF_SET(__pyx_v_b3, __pyx_t_2);
+  __pyx_t_2 = 0;
+
+  /* "medianfilter.pyx":57
+ *         b2 = int(b2)
+ *         b3 = int(b3)
+ *         b4 = int(b4)             # <<<<<<<<<<<<<<
+ *         med1=np.nanmedian(x[b1:b2,b3:b4])
+ *         med2=np.nanmedian(y[b1:b2,b3:b4])
+ */
+  __pyx_t_2 = __Pyx_PyNumber_Int(__pyx_v_b4); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 57, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __Pyx_DECREF_SET(__pyx_v_b4, __pyx_t_2);
+  __pyx_t_2 = 0;
+
+  /* "medianfilter.pyx":58
+ *         b3 = int(b3)
+ *         b4 = int(b4)
  *         med1=np.nanmedian(x[b1:b2,b3:b4])             # <<<<<<<<<<<<<<
  *         med2=np.nanmedian(y[b1:b2,b3:b4])
  *         std1=np.nanstd(x[b1:b2,b3:b4])
  */
-  __pyx_t_4 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 55, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 58, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_nanmedian); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 55, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_nanmedian); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 58, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __pyx_t_4 = PySlice_New(__pyx_v_b1, __pyx_v_b2, Py_None); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 55, __pyx_L1_error)
+  __pyx_t_4 = PySlice_New(__pyx_v_b1, __pyx_v_b2, Py_None); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 58, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_5 = PySlice_New(__pyx_v_b3, __pyx_v_b4, Py_None); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 55, __pyx_L1_error)
+  __pyx_t_5 = PySlice_New(__pyx_v_b3, __pyx_v_b4, Py_None); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 58, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  __pyx_t_6 = PyTuple_New(2); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 55, __pyx_L1_error)
+  __pyx_t_6 = PyTuple_New(2); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 58, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
   __Pyx_GIVEREF(__pyx_t_4);
   PyTuple_SET_ITEM(__pyx_t_6, 0, __pyx_t_4);
@@ -2298,7 +2346,7 @@ static PyObject *__pyx_pf_12medianfilter_2median_std(CYTHON_UNUSED PyObject *__p
   PyTuple_SET_ITEM(__pyx_t_6, 1, __pyx_t_5);
   __pyx_t_4 = 0;
   __pyx_t_5 = 0;
-  __pyx_t_5 = PyObject_GetItem(__pyx_v_x, __pyx_t_6); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 55, __pyx_L1_error)
+  __pyx_t_5 = PyObject_GetItem(__pyx_v_x, __pyx_t_6); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 58, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
   __pyx_t_6 = NULL;
@@ -2312,17 +2360,17 @@ static PyObject *__pyx_pf_12medianfilter_2median_std(CYTHON_UNUSED PyObject *__p
     }
   }
   if (!__pyx_t_6) {
-    __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_t_1, __pyx_t_5); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 55, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_t_1, __pyx_t_5); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 58, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     __Pyx_GOTREF(__pyx_t_2);
   } else {
-    __pyx_t_4 = PyTuple_New(1+1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 55, __pyx_L1_error)
+    __pyx_t_4 = PyTuple_New(1+1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 58, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_GIVEREF(__pyx_t_6); PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_t_6); __pyx_t_6 = NULL;
     __Pyx_GIVEREF(__pyx_t_5);
     PyTuple_SET_ITEM(__pyx_t_4, 0+1, __pyx_t_5);
     __pyx_t_5 = 0;
-    __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_t_4, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 55, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_t_4, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 58, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   }
@@ -2330,23 +2378,23 @@ static PyObject *__pyx_pf_12medianfilter_2median_std(CYTHON_UNUSED PyObject *__p
   __pyx_v_med1 = __pyx_t_2;
   __pyx_t_2 = 0;
 
-  /* "medianfilter.pyx":56
- * 
+  /* "medianfilter.pyx":59
+ *         b4 = int(b4)
  *         med1=np.nanmedian(x[b1:b2,b3:b4])
  *         med2=np.nanmedian(y[b1:b2,b3:b4])             # <<<<<<<<<<<<<<
  *         std1=np.nanstd(x[b1:b2,b3:b4])
  *         std2=np.nanstd(y[b1:b2,b3:b4])
  */
-  __pyx_t_1 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 56, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 59, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_nanmedian); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 56, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_nanmedian); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 59, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = PySlice_New(__pyx_v_b1, __pyx_v_b2, Py_None); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 56, __pyx_L1_error)
+  __pyx_t_1 = PySlice_New(__pyx_v_b1, __pyx_v_b2, Py_None); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 59, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_5 = PySlice_New(__pyx_v_b3, __pyx_v_b4, Py_None); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 56, __pyx_L1_error)
+  __pyx_t_5 = PySlice_New(__pyx_v_b3, __pyx_v_b4, Py_None); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 59, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  __pyx_t_6 = PyTuple_New(2); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 56, __pyx_L1_error)
+  __pyx_t_6 = PyTuple_New(2); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 59, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
   __Pyx_GIVEREF(__pyx_t_1);
   PyTuple_SET_ITEM(__pyx_t_6, 0, __pyx_t_1);
@@ -2354,7 +2402,7 @@ static PyObject *__pyx_pf_12medianfilter_2median_std(CYTHON_UNUSED PyObject *__p
   PyTuple_SET_ITEM(__pyx_t_6, 1, __pyx_t_5);
   __pyx_t_1 = 0;
   __pyx_t_5 = 0;
-  __pyx_t_5 = PyObject_GetItem(__pyx_v_y, __pyx_t_6); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 56, __pyx_L1_error)
+  __pyx_t_5 = PyObject_GetItem(__pyx_v_y, __pyx_t_6); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 59, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
   __pyx_t_6 = NULL;
@@ -2368,17 +2416,17 @@ static PyObject *__pyx_pf_12medianfilter_2median_std(CYTHON_UNUSED PyObject *__p
     }
   }
   if (!__pyx_t_6) {
-    __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_t_5); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 56, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_t_5); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 59, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     __Pyx_GOTREF(__pyx_t_2);
   } else {
-    __pyx_t_1 = PyTuple_New(1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 56, __pyx_L1_error)
+    __pyx_t_1 = PyTuple_New(1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 59, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_GIVEREF(__pyx_t_6); PyTuple_SET_ITEM(__pyx_t_1, 0, __pyx_t_6); __pyx_t_6 = NULL;
     __Pyx_GIVEREF(__pyx_t_5);
     PyTuple_SET_ITEM(__pyx_t_1, 0+1, __pyx_t_5);
     __pyx_t_5 = 0;
-    __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_1, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 56, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_1, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 59, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   }
@@ -2386,23 +2434,23 @@ static PyObject *__pyx_pf_12medianfilter_2median_std(CYTHON_UNUSED PyObject *__p
   __pyx_v_med2 = __pyx_t_2;
   __pyx_t_2 = 0;
 
-  /* "medianfilter.pyx":57
+  /* "medianfilter.pyx":60
  *         med1=np.nanmedian(x[b1:b2,b3:b4])
  *         med2=np.nanmedian(y[b1:b2,b3:b4])
  *         std1=np.nanstd(x[b1:b2,b3:b4])             # <<<<<<<<<<<<<<
  *         std2=np.nanstd(y[b1:b2,b3:b4])
  *         return(med1,med2,std1,std2)
  */
-  __pyx_t_4 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 57, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 60, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_nanstd); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 57, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_nanstd); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 60, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __pyx_t_4 = PySlice_New(__pyx_v_b1, __pyx_v_b2, Py_None); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 57, __pyx_L1_error)
+  __pyx_t_4 = PySlice_New(__pyx_v_b1, __pyx_v_b2, Py_None); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 60, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_5 = PySlice_New(__pyx_v_b3, __pyx_v_b4, Py_None); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 57, __pyx_L1_error)
+  __pyx_t_5 = PySlice_New(__pyx_v_b3, __pyx_v_b4, Py_None); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 60, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  __pyx_t_6 = PyTuple_New(2); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 57, __pyx_L1_error)
+  __pyx_t_6 = PyTuple_New(2); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 60, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
   __Pyx_GIVEREF(__pyx_t_4);
   PyTuple_SET_ITEM(__pyx_t_6, 0, __pyx_t_4);
@@ -2410,7 +2458,7 @@ static PyObject *__pyx_pf_12medianfilter_2median_std(CYTHON_UNUSED PyObject *__p
   PyTuple_SET_ITEM(__pyx_t_6, 1, __pyx_t_5);
   __pyx_t_4 = 0;
   __pyx_t_5 = 0;
-  __pyx_t_5 = PyObject_GetItem(__pyx_v_x, __pyx_t_6); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 57, __pyx_L1_error)
+  __pyx_t_5 = PyObject_GetItem(__pyx_v_x, __pyx_t_6); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 60, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
   __pyx_t_6 = NULL;
@@ -2424,17 +2472,17 @@ static PyObject *__pyx_pf_12medianfilter_2median_std(CYTHON_UNUSED PyObject *__p
     }
   }
   if (!__pyx_t_6) {
-    __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_t_1, __pyx_t_5); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 57, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_t_1, __pyx_t_5); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 60, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     __Pyx_GOTREF(__pyx_t_2);
   } else {
-    __pyx_t_4 = PyTuple_New(1+1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 57, __pyx_L1_error)
+    __pyx_t_4 = PyTuple_New(1+1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 60, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_GIVEREF(__pyx_t_6); PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_t_6); __pyx_t_6 = NULL;
     __Pyx_GIVEREF(__pyx_t_5);
     PyTuple_SET_ITEM(__pyx_t_4, 0+1, __pyx_t_5);
     __pyx_t_5 = 0;
-    __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_t_4, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 57, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_t_4, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 60, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   }
@@ -2442,23 +2490,23 @@ static PyObject *__pyx_pf_12medianfilter_2median_std(CYTHON_UNUSED PyObject *__p
   __pyx_v_std1 = __pyx_t_2;
   __pyx_t_2 = 0;
 
-  /* "medianfilter.pyx":58
+  /* "medianfilter.pyx":61
  *         med2=np.nanmedian(y[b1:b2,b3:b4])
  *         std1=np.nanstd(x[b1:b2,b3:b4])
  *         std2=np.nanstd(y[b1:b2,b3:b4])             # <<<<<<<<<<<<<<
  *         return(med1,med2,std1,std2)
  * 
  */
-  __pyx_t_1 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 58, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 61, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_nanstd); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 58, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_nanstd); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 61, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = PySlice_New(__pyx_v_b1, __pyx_v_b2, Py_None); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 58, __pyx_L1_error)
+  __pyx_t_1 = PySlice_New(__pyx_v_b1, __pyx_v_b2, Py_None); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 61, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_5 = PySlice_New(__pyx_v_b3, __pyx_v_b4, Py_None); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 58, __pyx_L1_error)
+  __pyx_t_5 = PySlice_New(__pyx_v_b3, __pyx_v_b4, Py_None); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 61, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  __pyx_t_6 = PyTuple_New(2); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 58, __pyx_L1_error)
+  __pyx_t_6 = PyTuple_New(2); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 61, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
   __Pyx_GIVEREF(__pyx_t_1);
   PyTuple_SET_ITEM(__pyx_t_6, 0, __pyx_t_1);
@@ -2466,7 +2514,7 @@ static PyObject *__pyx_pf_12medianfilter_2median_std(CYTHON_UNUSED PyObject *__p
   PyTuple_SET_ITEM(__pyx_t_6, 1, __pyx_t_5);
   __pyx_t_1 = 0;
   __pyx_t_5 = 0;
-  __pyx_t_5 = PyObject_GetItem(__pyx_v_y, __pyx_t_6); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 58, __pyx_L1_error)
+  __pyx_t_5 = PyObject_GetItem(__pyx_v_y, __pyx_t_6); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 61, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
   __pyx_t_6 = NULL;
@@ -2480,17 +2528,17 @@ static PyObject *__pyx_pf_12medianfilter_2median_std(CYTHON_UNUSED PyObject *__p
     }
   }
   if (!__pyx_t_6) {
-    __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_t_5); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 58, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_t_5); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 61, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     __Pyx_GOTREF(__pyx_t_2);
   } else {
-    __pyx_t_1 = PyTuple_New(1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 58, __pyx_L1_error)
+    __pyx_t_1 = PyTuple_New(1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 61, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_GIVEREF(__pyx_t_6); PyTuple_SET_ITEM(__pyx_t_1, 0, __pyx_t_6); __pyx_t_6 = NULL;
     __Pyx_GIVEREF(__pyx_t_5);
     PyTuple_SET_ITEM(__pyx_t_1, 0+1, __pyx_t_5);
     __pyx_t_5 = 0;
-    __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_1, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 58, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_1, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 61, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   }
@@ -2498,7 +2546,7 @@ static PyObject *__pyx_pf_12medianfilter_2median_std(CYTHON_UNUSED PyObject *__p
   __pyx_v_std2 = __pyx_t_2;
   __pyx_t_2 = 0;
 
-  /* "medianfilter.pyx":59
+  /* "medianfilter.pyx":62
  *         std1=np.nanstd(x[b1:b2,b3:b4])
  *         std2=np.nanstd(y[b1:b2,b3:b4])
  *         return(med1,med2,std1,std2)             # <<<<<<<<<<<<<<
@@ -2506,7 +2554,7 @@ static PyObject *__pyx_pf_12medianfilter_2median_std(CYTHON_UNUSED PyObject *__p
  * 
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_2 = PyTuple_New(4); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 59, __pyx_L1_error)
+  __pyx_t_2 = PyTuple_New(4); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 62, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_INCREF(__pyx_v_med1);
   __Pyx_GIVEREF(__pyx_v_med1);
@@ -2835,6 +2883,7 @@ static struct PyModuleDef __pyx_moduledef = {
 static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_, __pyx_k_, sizeof(__pyx_k_), 0, 0, 1, 1},
   {&__pyx_n_s_Dataset, __pyx_k_Dataset, sizeof(__pyx_k_Dataset), 0, 0, 1, 1},
+  {&__pyx_kp_s_Users_cluettig_Documents_Daten, __pyx_k_Users_cluettig_Documents_Daten, sizeof(__pyx_k_Users_cluettig_Documents_Daten), 0, 0, 1, 0},
   {&__pyx_n_s_array, __pyx_k_array, sizeof(__pyx_k_array), 0, 0, 1, 1},
   {&__pyx_n_s_b1, __pyx_k_b1, sizeof(__pyx_k_b1), 0, 0, 1, 1},
   {&__pyx_n_s_b2, __pyx_k_b2, sizeof(__pyx_k_b2), 0, 0, 1, 1},
@@ -2877,7 +2926,6 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_sys, __pyx_k_sys, sizeof(__pyx_k_sys), 0, 0, 1, 1},
   {&__pyx_n_s_test, __pyx_k_test, sizeof(__pyx_k_test), 0, 0, 1, 1},
   {&__pyx_n_s_time, __pyx_k_time, sizeof(__pyx_k_time), 0, 0, 1, 1},
-  {&__pyx_kp_s_work_ollie_cluettig_filter_fert, __pyx_k_work_ollie_cluettig_filter_fert, sizeof(__pyx_k_work_ollie_cluettig_filter_fert), 0, 0, 1, 0},
   {&__pyx_n_s_x, __pyx_k_x, sizeof(__pyx_k_x), 0, 0, 1, 1},
   {&__pyx_n_s_xrange, __pyx_k_xrange, sizeof(__pyx_k_xrange), 0, 0, 1, 1},
   {&__pyx_n_s_y, __pyx_k_y, sizeof(__pyx_k_y), 0, 0, 1, 1},
@@ -2909,7 +2957,7 @@ static int __Pyx_InitCachedConstants(void) {
   __pyx_tuple__2 = PyTuple_Pack(13, __pyx_n_s_x, __pyx_n_s_y, __pyx_n_s_c, __pyx_n_s_e, __pyx_n_s_m, __pyx_n_s_n, __pyx_n_s_z, __pyx_n_s_i, __pyx_n_s_j, __pyx_n_s_m1, __pyx_n_s_m2, __pyx_n_s_s1, __pyx_n_s_s2); if (unlikely(!__pyx_tuple__2)) __PYX_ERR(0, 11, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__2);
   __Pyx_GIVEREF(__pyx_tuple__2);
-  __pyx_codeobj__3 = (PyObject*)__Pyx_PyCode_New(4, 0, 13, 0, 0, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__2, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_work_ollie_cluettig_filter_fert, __pyx_n_s_f, 11, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__3)) __PYX_ERR(0, 11, __pyx_L1_error)
+  __pyx_codeobj__3 = (PyObject*)__Pyx_PyCode_New(4, 0, 13, 0, 0, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__2, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_Users_cluettig_Documents_Daten, __pyx_n_s_f, 11, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__3)) __PYX_ERR(0, 11, __pyx_L1_error)
 
   /* "medianfilter.pyx":33
  * 
@@ -2921,7 +2969,7 @@ static int __Pyx_InitCachedConstants(void) {
   __pyx_tuple__4 = PyTuple_Pack(14, __pyx_n_s_x, __pyx_n_s_y, __pyx_n_s_i, __pyx_n_s_j, __pyx_n_s_c, __pyx_n_s_index, __pyx_n_s_b1, __pyx_n_s_b2, __pyx_n_s_b3, __pyx_n_s_b4, __pyx_n_s_med1, __pyx_n_s_med2, __pyx_n_s_std1, __pyx_n_s_std2); if (unlikely(!__pyx_tuple__4)) __PYX_ERR(0, 33, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__4);
   __Pyx_GIVEREF(__pyx_tuple__4);
-  __pyx_codeobj__5 = (PyObject*)__Pyx_PyCode_New(6, 0, 14, 0, 0, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__4, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_work_ollie_cluettig_filter_fert, __pyx_n_s_median_std, 33, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__5)) __PYX_ERR(0, 33, __pyx_L1_error)
+  __pyx_codeobj__5 = (PyObject*)__Pyx_PyCode_New(6, 0, 14, 0, 0, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__4, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_Users_cluettig_Documents_Daten, __pyx_n_s_median_std, 33, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__5)) __PYX_ERR(0, 33, __pyx_L1_error)
   __Pyx_RefNannyFinishContext();
   return 0;
   __pyx_L1_error:;

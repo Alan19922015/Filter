@@ -51,7 +51,10 @@ def median_std(x,y,i,j,c,index):
                 b3=j-c/2
                 b4=j+c/2
         
-                
+        b1 = int(b1)
+        b2 = int(b2)
+        b3 = int(b3)
+        b4 = int(b4)        
         med1=np.nanmedian(x[b1:b2,b3:b4])
         med2=np.nanmedian(y[b1:b2,b3:b4])
         std1=np.nanstd(x[b1:b2,b3:b4])
